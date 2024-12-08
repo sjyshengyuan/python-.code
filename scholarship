@@ -1,0 +1,27 @@
+n = int(input())
+s = []
+for i in range(n):
+    s.append(list(map(int, input().split())))
+class A():
+    def __init__(self, yuwen ,shuxue ,yingyu,xuehaos):
+        self.yuwen = yuwen
+        self.shuxue = shuxue
+        self.yingyu = yingyu
+        self.xuehaos = xuehaos
+        self.zongfen = yuwen + shuxue + yingyu 
+xuesheng = []
+i = 1
+for x in s:
+        xuesheng.append(A(x[0], x[1], x[2],i))
+        i += 1
+def san(i):
+     return i.zongfen
+def er(i):
+     return i.yuwen
+def si(i):
+     return i.xuehaos
+xuesheng.sort(key=si,reverse=False)
+xuesheng.sort(key=er,reverse=True)
+xuesheng.sort(key=san,reverse=True)
+for i in xuesheng:
+     print(i.xuehaos,i.zongfen)

@@ -1,0 +1,21 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+iris_data = pd.DataFrame(data=iris.data, columns=iris.feature_names)
+iris_data['species'] = iris.target
+
+iris_data['species'] = iris_data['species'].map({0: 'setosa', 1: 'versicolor', 2: 'virginica'})
+
+plt.figure(figsize=(10, 6))
+for species in iris_data['species'].unique():
+    subset = iris_data[iris_data['species'] == species]
+    plt.scatter(subset['sepal length (cm)'], subset['sepal width (cm)'], label=species)
+
+plt.title('鸢尾花数据集 - 花萼长度与花萼宽度的散点图')
+plt.xlabel('花萼长度 (cm)')
+plt.ylabel('花萼宽度 (cm)')
+plt.legend()
+plt.grid()
+plt.show()
